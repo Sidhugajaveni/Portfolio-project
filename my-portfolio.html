@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidu Sidarta Rai Gajaveni - Portfolio</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0f172a; /* slate-900 */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Animation for sections */
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Styles for the project modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: #1e293b; /* slate-800 */
+            padding: 1.5rem 2rem;
+            border-radius: 0.75rem;
+            max-width: 90%;
+            width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            cursor: pointer;
+            font-size: 1.75rem;
+            color: #94a3b8; /* slate-400 */
+            transition: color 0.2s;
+        }
+        .modal-close-button:hover {
+            color: #f1f5f9; /* slate-100 */
+        }
+        .survey-iframe {
+            width: 100%;
+            height: 70vh;
+            border-radius: 0.5rem;
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #22d3ee, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-glow {
+            border: 1px solid #334155; /* slate-700 */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .card-glow:hover {
+            border-color: #22d3ee;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+        }
+    </style>
+</head>
+<body class="text-slate-300">
+
+    <!-- Header & Navigation -->
+    <header class="bg-slate-900/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">GSSR</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300">About</a>
+                <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300">Experience</a>
+                <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300">Projects</a>
+                <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300">Skills</a>
+                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-slate-800 transition-colors duration-300">About</a>
+            <a href="#experience" class="block py-3 px-6 text-sm hover:bg-slate-800 transition-colors duration-300">Experience</a>
+            <a href="#projects" class="block py-3 px-6 text-sm hover:bg-slate-800 transition-colors duration-300">Projects</a>
+            <a href="#skills" class="block py-3 px-6 text-sm hover:bg-slate-800 transition-colors duration-300">Skills</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-slate-800 transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20 section-fade-in">
+            <img src="https://i.postimg.cc/tTyPdFPM/sidhu-new-passphoto.jpg" alt="Gajaveni Sidhu Sidartha Rai" class="w-36 h-36 rounded-full mx-auto mb-6 border-4 border-slate-700 shadow-2xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">Gajaveni Sidhu Sidartha Rai</h1>
+            <p class="text-xl md:text-2xl gradient-text font-medium mb-8">Computer Science Student specializing in Cyber Security</p>
+            <p class="max-w-3xl mx-auto text-lg text-slate-400 mb-8">
+                Highly motivated and results-oriented, eager to contribute to organizational growth by applying strong foundational knowledge in Python, web development, and network security.
+            </p>
+            <div class="flex justify-center space-x-6 text-3xl text-slate-500">
+                <a href="https://github.com/Sidhugajaveni" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/Sidhugajaveni" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sidhugajaveni555@gmail.com" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center bg-slate-800/50 rounded-2xl shadow-xl p-8 md:p-12 card-glow">
+                <div class="md:w-2/3 md:pr-12">
+                    <div id="about-me-content">
+                        <p class="text-lg text-slate-300 mb-4">
+                            I am a Computer Science and Engineering student at Malla Reddy Engineering College, with a deep specialization in Cyber Security. My goal is to secure an entry-level position where I can leverage my technical expertise and proactive problem-solving approach.
+                        </p>
+                        <p class="text-lg text-slate-300">
+                            My journey has been defined by a passion for technology, from web development to network security. I am always eager to learn, take on new challenges, and contribute effectively to a team environment. Outside of academics, I've developed strategic thinking skills through activities like participating in state-level chess competitions.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/3 mt-8 md:mt-0">
+                    <img src="https://i.postimg.cc/tTyPdFPM/sidhu-new-passphoto.jpg" alt="A picture of Sidu Sidarta Rai Gajaveni" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Internship Experience</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-slate-800/50 rounded-2xl shadow-xl p-8 relative card-glow">
+                    <div class="absolute top-8 left-8 bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full text-sm font-semibold">Internship</div>
+                    <h3 class="text-2xl font-bold mt-12 mb-2 text-white">Python Intern</h3>
+                    <p class="font-semibold text-slate-400 mb-4">Path Creators</p>
+                    <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
+                        <li>Gained practical experience in Python programming through hands-on work on diverse tasks.</li>
+                        <li>Enhanced coding proficiency and problem-solving skills.</li>
+                        <li>Collaborated on data processing scripts and automation tools to support team objectives.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Project 1 -->
+                <div class="bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col card-glow">
+                    <img src="https://placehold.co/600x400/22d3ee/0f172a?text=Survey+Form" alt="Responsive Survey Form" class="w-full h-56 object-cover">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Responsive Survey Form</h3>
+                        <p class="text-slate-400 mb-4 flex-grow">Designed and developed a fully responsive survey form using HTML and CSS, ensuring optimal user experience across various devices and screen sizes.</p>
+                        <div class="mt-auto pt-4">
+                             <button id="open-survey-modal" class="w-full bg-cyan-900/50 text-cyan-300 font-semibold py-2 px-4 rounded-lg hover:bg-cyan-900/80 transition-colors"><i class="fas fa-eye mr-2"></i>View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col card-glow">
+                    <img src="https://placehold.co/600x400/a78bfa/0f172a?text=Banking+App" alt="Banking Management Application" class="w-full h-56 object-cover">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Basic Banking Management Application</h3>
+                        <p class="text-slate-400 mb-4 flex-grow">Developed a command-line banking application using Python, implementing core functionalities like secure account creation, deposits/withdrawals, and transaction history.</p>
+                         <div class="mt-auto pt-4">
+                             <button id="open-banking-modal" class="w-full bg-cyan-900/50 text-cyan-300 font-semibold py-2 px-4 rounded-lg hover:bg-cyan-900/80 transition-colors"><i class="fas fa-info-circle mr-2"></i>View Project Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Technical Skills</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fab fa-python text-5xl text-cyan-400 mb-4"></i><h3 class="font-bold text-lg text-white">Python</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fab fa-html5 text-5xl text-orange-400 mb-4"></i><h3 class="font-bold text-lg text-white">HTML</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fab fa-css3-alt text-5xl text-blue-400 mb-4"></i><h3 class="font-bold text-lg text-white">CSS</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fab fa-js-square text-5xl text-yellow-300 mb-4"></i><h3 class="font-bold text-lg text-white">JavaScript</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fas fa-shield-halved text-5xl text-red-400 mb-4"></i><h3 class="font-bold text-lg text-white">Ethical Hacking</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fas fa-magnifying-glass-chart text-5xl text-teal-300 mb-4"></i><h3 class="font-bold text-lg text-white">Vulnerability Assessment</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fas fa-network-wired text-5xl text-slate-400 mb-4"></i><h3 class="font-bold text-lg text-white">Nmap</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fab fa-linux text-5xl text-slate-200 mb-4"></i><h3 class="font-bold text-lg text-white">Linux</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fas fa-file-circle-question text-5xl text-violet-400 mb-4"></i><h3 class="font-bold text-lg text-white">Information Gathering</h3></div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-glow"><i class="fas fa-laptop-code text-5xl text-green-400 mb-4"></i><h3 class="font-bold text-lg text-white">C (Basics)</h3></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications & Achievements -->
+        <section id="achievements" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Achievements & Certifications</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-800/50 rounded-xl p-8 card-glow">
+                    <h3 class="font-bold text-2xl mb-4 text-white">Achievements</h3>
+                    <ul class="list-disc list-inside text-slate-300 space-y-3 text-lg">
+                        <li>Appreciation Certificate for organizing a college technical event.</li>
+                        <li>Actively participated in a college Technical Expo.</li>
+                        <li>Competed in a HACKATHON.</li>
+                        <li>Participated in a state-level chess competition.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 rounded-xl p-8 card-glow">
+                    <h3 class="font-bold text-2xl mb-4 text-white">Certifications</h3>
+                    <ul class="list-disc list-inside text-slate-300 space-y-3 text-lg">
+                        <li>Ethical Hacking - NPTEL</li>
+                        <li>Python - Skilltimate Technologies</li>
+                        <li>Web Development - NSDC</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center mb-4 text-white">Get In Touch</h2>
+            <p class="text-center max-w-2xl mx-auto text-slate-400 mb-12 text-lg">
+                I'm currently open to new opportunities and collaborations. Contact me via email or use the form below.
+            </p>
+            <form action="https://formspree.io/f/your-form-id" method="POST" class="max-w-xl mx-auto bg-slate-800/50 p-8 rounded-2xl card-glow">
+                <div class="mb-5">
+                    <label for="name" class="block text-slate-300 font-bold mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border rounded-lg bg-slate-700 border-slate-600 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="block text-slate-300 font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border rounded-lg bg-slate-700 border-slate-600 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all">
+                </div>
+                <div class="mb-8">
+                    <label for="message" class="block text-slate-300 font-bold mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border rounded-lg bg-slate-700 border-slate-600 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-300/50 shadow-lg hover:shadow-cyan-500/50">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/50 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <div class="flex justify-center space-x-6 mb-4 text-2xl">
+                <a href="https://github.com/Sidhugajaveni" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/Sidhugajaveni" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sidhugajaveni555@gmail.com" target="_blank" class="hover:text-cyan-400 transition-transform transform hover:scale-110"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Gajaveni Sidhu Sidartha Rai. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Survey Form Modal -->
+    <div id="survey-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="close-survey-modal" class="modal-close-button">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-white">Responsive Survey Form</h3>
+            <iframe id="survey-iframe" class="survey-iframe" srcdoc=""></iframe>
+        </div>
+    </div>
+    
+    <!-- Banking App Modal -->
+    <div id="banking-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="close-banking-modal" class="modal-close-button">&times;</span>
+            <div class="prose dark:prose-invert max-w-none">
+                <h3 class="text-2xl font-bold mb-4 text-white">Banking Management System</h3>
+                <p class="text-slate-400">This project is a command-line banking application developed using Python. It demonstrates object-oriented programming principles and file handling for data persistence.</p>
+                <h4 class="text-xl font-semibold mt-6 mb-2 text-white">Core Features:</h4>
+                <ul class="list-disc list-inside text-slate-300">
+                    <li>Secure account creation with initial deposit requirements.</li>
+                    <li>Functionality for depositing and withdrawing funds.</li>
+                    <li>Balance enquiry for specific accounts.</li>
+                    <li>Ability to view a list of all account holders.</li>
+                    <li>Options to modify or close an existing account.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- DATA FOR MODALS ---
+        const surveyFormHTML = `
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <style>
+                        * { margin: 0px; padding: 0px; box-sizing: border-box; }
+                        body { font-family: Georgia, "Times New Roman", Times, serif; color: white; background-color: black; }
+                        .container { max-width: 50rem; margin: 2rem auto; padding: 0px 2rem; border: 1px solid #333; border-radius: 10px; }
+                        .main-heading { font-size: 3rem; margin: 2rem 0rem 1rem; color: white; text-align: center; }
+                        .form-class { margin: 2rem 0px; }
+                        .form-control { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+                        .heading-field { margin: 1rem 0px 0.6rem; }
+                        .field-head { font-size: 1.5rem; }
+                        .input-div { margin-bottom: 1rem; flex: 1; }
+                        .field-inputs { display: flex; flex-wrap: wrap; gap: 2rem; }
+                        .form-control-input { font-size: 1rem; padding: 0.75rem; text-indent: 0.5rem; border: none; outline: 1px solid #555; border-radius: 7px; width: 100%; color: #ddd; background-color: #222; }
+                        option { color: #111; background-color: #fff; }
+                        .form-control-input:focus { color: #fff; background-color: #333; border-color: #023de3; outline: 0; box-shadow: 0 0 0 0.25rem rgba(2, 61, 227, 0.5); }
+                        .help-text { font-size: 0.8rem; margin-top: 0.4rem; padding: 0.1rem; color: #888; }
+                        button { font-size: 1.5rem; margin: 1rem auto; display: block; padding: 0.75rem 1.5rem; border: 1px solid #023de3; background-color: #023de3; color: white; border-radius: 10px; box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px; cursor: pointer; transition: background-color 0.3s; }
+                        button:hover { background-color: #022cb8; }
+                    </style>
+                </head>
+                <body>
+                <div class="container">
+                    <h1 class="main-heading">Survey Form:</h1><hr>
+                    <form class="form-class">
+                        <div class="form-control">
+                            <div class="heading-field"><h3 class="field-head">Customer Name</h3></div>
+                            <div class="field-inputs">
+                                <div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">Enter Your First Name</div></div>
+                                <div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">Enter last First Name</div></div>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div class="heading-field"><h3 class="field-head">Address</h3></div>
+                            <div><div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">Street Address</div></div></div>
+                            <div><div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">Street Address Line 2</div></div></div>
+                            <div class="field-inputs">
+                                <div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">City</div></div>
+                                <div class="input-div"><input type="text" class="form-control-input" required><div class="help-text">State</div></div>
+                            </div>
+                            <div class="field-inputs">
+                                <div class="input-div"><input type="number" class="form-control-input" required><div class="help-text">Zip</div></div>
+                                <div class="input-div"><select class="form-control-input" required><option value="India">India</option></select><div class="help-text">Select Country</div></div>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div class="heading-field"><h3 class="field-head">Contact</h3></div>
+                            <div class="field-inputs">
+                                <div class="input-div"><input type="tel" class="form-control-input" required><div class="help-text">Phone</div></div>
+                                <div class="input-div"><input type="email" class="form-control-input" required><div class="help-text">Email</div></div>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div class="heading-field"><h3 class="field-head">Personal Details</h3></div>
+                            <div class="field-inputs"><div class="input-div"><input type="radio" id="male" name="gender" value="male"><label for="male">Male</label><br><input type="radio" id="female" name="gender" value="female"><label for="female">Female</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Other</label><br></div></div>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                </body>
+            </html>
+        `;
+
+        document.getElementById('survey-iframe').srcdoc = surveyFormHTML;
+        
+        // --- MODAL HANDLING ---
+        function setupModal(modalId, openButtonId, closeButtonId) {
+            const modal = document.getElementById(modalId);
+            const openButton = document.getElementById(openButtonId);
+            const closeButton = document.getElementById(closeButtonId);
+
+            if (!modal || !openButton || !closeButton) return;
+
+            openButton.addEventListener('click', () => modal.classList.remove('hidden'));
+            closeButton.addEventListener('click', () => modal.classList.add('hidden'));
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
+
+        setupModal('survey-modal', 'open-survey-modal', 'close-survey-modal');
+        setupModal('banking-modal', 'open-banking-modal', 'close-banking-modal');
+
+
+        // --- GENERAL UI ---
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                   mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+
+        // Section fade-in animation on scroll
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
